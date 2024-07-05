@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ "$#" -eq 1  ]
+then
+    mode=0
+else
+    mode=$2
+fi
+
+if [ 1 -eq $mode ]
+then
+    runFile=$1
+else
+    fileIn=$1
+    runFile=".seri_run."$fileIn
+    \cp -f $fileIn $runFile
+fi
+
+runPath=`pwd | xargs echo -n`
+while true
+do
+    cd $runPath
+    num=`wc -l $runFile | sed 's/ .*//'`
+    cmd=`head -n 1 $runFile | sed 's/#.*//'`
+    sed -i '1d' $runFile
+    eval $cmd
+
+    if [ 0 -eq $num ]
+    then
+        echo "***** All command done *****"
+        exit 1
+    fi
+done
