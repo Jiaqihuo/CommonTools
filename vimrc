@@ -229,6 +229,7 @@ Bundle 'gmarik/vundle'
 Bundle 'L9'  
 
 " b) 指定Github中其他用户仓库的插件，使用“用户名/插件名称”的方式指定  
+Bundle 'rhysd/vim-clang-format'
 Bundle 'tpope/vim-fugitive'  
 Bundle 'Lokaltog/vim-easymotion'  
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}  
